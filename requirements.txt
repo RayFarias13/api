@@ -22,3 +22,4 @@ djangorestframework
 django-filter
 drf_spectacular
 psycopg2
+gunicorn==22.0.0
