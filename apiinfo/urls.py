@@ -9,6 +9,7 @@ router.register(r'students', AlunoViewSet, basename='students')
 router.register(r'adaptations', AdaptacaoViewSet, basename='adaptations')
 router.register(r'reports', RelatorioViewSet, basename='reports')
 router.register(r'user', User2ViewSet, basename='user')
+#router.register(r'user', User3ViewSet, basename='user')   
 
 urlpatterns = [
     path('', include(router.urls)),

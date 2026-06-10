@@ -6,12 +6,12 @@ from .models import *
 from .serializers import *
 
 
-class UserViewSet(viewsets.ModelViewSet):
+'''class UserViewSet(viewsets.ModelViewSet):
     queryset = UserModel.objects.all().order_by('id')
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id','user__username','user__email']
-
+'''
 
 class AlunoViewSet(viewsets.ModelViewSet):
     queryset = AlunoModel.objects.all().order_by('id')
@@ -58,3 +58,9 @@ class User2ViewSet(viewsets.ModelViewSet):
     serializer_class = User2Serializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id','name','email']
+
+class User3ViewSet(viewsets.ModelViewSet):
+    queryset = User3model.objects.all()
+    serializer_class = User3Serializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id', 'username', 'email', 'role']

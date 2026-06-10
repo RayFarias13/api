@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 import inspect
 import dj_database_url
 import psycopg2
+from django.conf import settings
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -132,7 +133,8 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-#AUTH_USER_MODEL = 'apiinfo.usuario'
+AUTH_USER_MODEL = 'apiinfo.User3model'
+
 
 SESSION_COOKIE_AGE = 21600 # 6 HORAS
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False

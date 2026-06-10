@@ -1,15 +1,22 @@
 from rest_framework import serializers
-from .models import AdaptationsModel, ReportsModel, User2model, UserModel, AlunoModel
+from .models import *
+from django_filters import rest_framework as filters
 
-class UserSerializer(serializers.ModelSerializer):
+
+'''class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = '__all__'
-
+'''
 class User2Serializer(serializers.ModelSerializer):
     class Meta:
         model = User2model
-        fields = 'name', 'email', 'password', 'role'
+        fields = '__all__'
+
+class User3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = User3model
+        fields = '__all__'
 
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
