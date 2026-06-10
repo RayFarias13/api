@@ -1,5 +1,10 @@
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import *
 
@@ -59,8 +64,50 @@ class User2ViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id','name','email']
 
-class User3ViewSet(viewsets.ModelViewSet):
-    queryset = User3model.objects.all()
-    serializer_class = User3Serializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id', 'username', 'email', 'role']
+
+
+
+
+
+
+
+
+class User2JWTLoginView(APIView):
+    permission_classes = []  # público
+
+    def post(self, request):
+        email = request.data.get("email")
+        password = request.data.get("password")
+
+        if not email or not password:
+            return Response(
+                {"error": "Email e senha obrigatórios"}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            user = User2model.objects.get(email=email)
+        except User2model.DoesNotExist:
+            return Response({"error": "Usuário não encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Checa senha usando o método do AbstractBaseUser
+        if not user.check_password(password):
+            return Response({"error": "Senha incorreta"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Gera tokens JWT
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        refresh_token = str(refresh)
+
+        return Response(
+            {
+                "user": {
+                    "id": user.id,
+                    "name": user.name,
+                    "email": user.email,
+                    "role": user.role,
+                },
+                "access": access_token,
+                "refresh": refresh_token,
+            },
+            status=status.HTTP_200_OK,
+        )

@@ -25,3 +25,5 @@ psycopg2
 gunicorn==22.0.0
 whitenoise
 cryptography
+rest_framework_simplejwt
+djangorestframework-simplejwt
