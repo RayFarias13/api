@@ -1,13 +1,9 @@
 from rest_framework import serializers
 from .models import *
-from django_filters import rest_framework as filters
+#from django_filters import rest_framework as filters
 
 
-'''class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserModel
-        fields = '__all__'
-'''
+
 class User2Serializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 

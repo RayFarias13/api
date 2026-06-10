@@ -4,35 +4,6 @@ from .crypto import encrypt_value, decrypt_value
 from django.contrib.auth.hashers import make_password, check_password
 
 
-'''
-class UserModel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role = models.CharField(max_length=100)
-
-    class Meta:
-        verbose_name = 'Usuário'
-        db_table = 'Usuario1'
-
-    def __str__(self):
-        return self.user.username
-'''
-
-'''
-class User2model(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    #name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=128)
-    role = models.CharField(max_length=100)
-
-    def set_password(self, raw_password):
-        self.password = make_password(raw_password)
-
-    def check_password(self, raw_password):
-        return check_password(raw_password, self.password)
-
-
-'''
 
 class User2Manager(BaseUserManager):
 

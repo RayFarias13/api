@@ -11,12 +11,6 @@ from .models import *
 from .serializers import *
 
 
-'''class UserViewSet(viewsets.ModelViewSet):
-    queryset = UserModel.objects.all().order_by('id')
-    serializer_class = UserSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','user__username','user__email']
-'''
 
 class AlunoViewSet(viewsets.ModelViewSet):
     queryset = AlunoModel.objects.all().order_by('id')
