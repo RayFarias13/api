@@ -1,20 +1,16 @@
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import (UserModel, AlunoModel, AdaptationsModel, ReportsModel)
+from .models import *
 
-from .serializers import (UserSerializer, AlunoSerializer, AdaptacaoSerializer,RelatorioSerializer)
+from .serializers import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = UserModel.objects.all().order_by('id')
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        'id',
-        'user__username',
-        'user__email'
-    ]
+    filterset_fields = ['id','user__username','user__email']
 
 
 class AlunoViewSet(viewsets.ModelViewSet):
@@ -56,3 +52,9 @@ class RelatorioViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(student_id=student_id)
 
         return queryset
+    
+class User2ViewSet(viewsets.ModelViewSet):
+    queryset = User2model.objects.all().order_by('id')
+    serializer_class = User2Serializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','name','email']

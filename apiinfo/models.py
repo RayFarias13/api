@@ -8,10 +8,18 @@ class UserModel(models.Model):
 
     class Meta:
         verbose_name = 'Usuário'
-        db_table = 'Usuario'
+        db_table = 'Usuario1'
 
     def __str__(self):
         return self.user.username
+
+class User2model(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    password = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+
+
 
 
 class AlunoModel(models.Model):
@@ -26,7 +34,7 @@ class AlunoModel(models.Model):
 
     class Meta:
         verbose_name = 'Aluno'
-        db_table = 'Aluno'
+        db_table = 'Usuario_Aluno'
 
     def __str__(self):
         return self.name
@@ -42,7 +50,7 @@ class AdaptationsModel(models.Model):
 
     class Meta:
         verbose_name = 'Adaptação'
-        db_table = 'Adaptacao'
+        db_table = 'Adaptacao_aluno'
     def __str__(self):
         return self.student.name
 
@@ -58,7 +66,7 @@ class ReportsModel(models.Model):
     
     class Meta:
         verbose_name = 'Relatório'
-        db_table = 'Relatorio'
+        db_table = 'Relatorio_aluno'
 
     def __str__(self):
         return self.student.name
