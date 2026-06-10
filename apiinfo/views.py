@@ -21,23 +21,14 @@ class AlunoViewSet(viewsets.ModelViewSet):
     queryset = AlunoModel.objects.all().order_by('id')
     serializer_class = AlunoSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        'id',
-        'name',
-        'course'
-    ]
+    filterset_fields = ['id','name','course']
 
 
 class AdaptacaoViewSet(viewsets.ModelViewSet):
     queryset = AdaptationsModel.objects.all().order_by('id')
     serializer_class = AdaptacaoSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        'id',
-        'student',
-        'student__name',
-        'description'
-    ]
+    filterset_fields = ['id','student','student__name','description']
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -54,12 +45,7 @@ class RelatorioViewSet(viewsets.ModelViewSet):
     queryset = ReportsModel.objects.all().order_by('id')
     serializer_class = RelatorioSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        'id',
-        'student',
-        'student__name',
-        'description'
-    ]
+    filterset_fields = [ 'id', 'student', 'student__name','description']
 
     def get_queryset(self):
         queryset = super().get_queryset()
